@@ -23,7 +23,7 @@ class SuperHeroi {
       return $this->forca;
     }
     public function getOrigem() {
-      return $this->Origem;
+      return $this->origem;
     }
     public function setId($id) {
       $this->id = $id;
@@ -52,36 +52,40 @@ class SuperHeroi {
       $this->origem = $origem;
     
      }
-    }
-    class Calculo extends SuperHeroi { 
-        private $aumentarEnergia;
-        private $calcularPoderMedio;
         
-        public function __construct($id, $nome, $poderEspecial, $energia, $forca, $origem, $aumentarEnergia, $calcularPoderMedio){
-            Calculo::setId($id);  
-            Calculo::setNome($nome);
-            Calculo::setPoderEspecial($poderEspecial);
-            Calculo::setEnergia($energia);
-            Calculo::setForca($forca);
-            Calculo::setOrigem($origem);
-            $this->aumentarEnergia = $aumentarEnergia;
-            $this->calcularPoderMedio = $calcularPoderMedio;
-       
-        }
-    public function aumentarEnergia(){   
-        return $this->energia*120118830; 
-
+     public function aumentarEnergia(){   
+        return $this->energia*$this->forca*120118830;
     }
-  }
-  public function calcularPoderMedio(){
-    return $this ->energia +$this->forca;
-    return $this ->calcularPoderMedio/2;
+	
+        public function calcularPoderMedio(){
+        return ($this->energia+$this->forca)/2;
 
+	}
 }
-$SuperHeroi = new SuperHeroi('01','Harry Potter', 'magia', 1000, 10000, 'Marte');
-$SuperHeroi = new SuperHeroi('02','Goku', 'resucita', 2000, 20000, 'Jupiter' );
-$SuperHeroi = new SuperHeroi('03','Jaspion', 'Super força', 3000, 30000, 'Terra' );
-$SuperHeroi = new SuperHeroi('04','Homen Aranha', 'Força sobre humana', 4000, 40000, 'Venus');
-echo $calculo->aumentarEnergia();
-echo $calculo->calcularPoderMedio();
+     class SuperHeroi1 extends SuperHeroi { 
+                
+        public function __construct($id, $nome, $poderEspecial, $energia, $forca, $origem){
+            SuperHeroi::setId($id);  
+            SuperHeroi::setNome($nome);
+            SuperHeroi::setPoderEspecial($poderEspecial);
+            SuperHeroi::setEnergia($energia);
+            SuperHeroi::setForca($forca);
+            SuperHeroi::setOrigem($origem);
+        }
+    }
+       
+       
+  $SuperHeroi = new SuperHeroi('01','Harry Potter', 'magia', 1000, 10000, 'Marte');
+  var_dump($SuperHeroi);
+  $SuperHeroi1 = new SuperHeroi('02','Goku', 'resucita', 2000, 20000, 'Jupiter' );
+  var_dump($SuperHeroi1);
+  $SuperHeroi2 = new SuperHeroi('03','Jaspion', 'Super força', 3000, 30000, 'Terra' );
+  var_dump($SuperHeroi2);
+  $SuperHeroi3 = new SuperHeroi('04','Homen Aranha', 'Força sobre humana', 4000, 40000, 'Venus');
+  var_dump($SuperHeroi3);
+
+  echo $SuperHeroi->aumentarEnergia();
+  echo "<br><br><br>";
+  echo $SuperHeroi->calcularPoderMedio();
+
 ?>
